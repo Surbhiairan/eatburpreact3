@@ -18,13 +18,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-    case ADD_REVIEW:// start fetching posts and set loading = true
-      console.log("*******************************************");  
+    case ADD_REVIEW:
       return { ...state, reviewLoading: true }; 
-    case ADD_REVIEW_SUCCESS:// return list of posts and make loading = false
+    case ADD_REVIEW_SUCCESS:
       return { ...state, review: action.payload.review, reviewError:null, reviewLoading: false };
-    case ADD_REVIEW_FAILURE:// return error and make loading = false
-      //error = action.payload || {message: action.payload.message};//2nd one is network or server down errors
+    case ADD_REVIEW_FAILURE:
       return { ...state, review: null, reviewError: action.payload.error, reviewLoading: false};  
     case FETCH_REVIEWS: 
       return { ...state,  reviewsListError: null, reviewLoading: true };     

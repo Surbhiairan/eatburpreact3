@@ -80,12 +80,20 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 console.log("login clicked-------");
                 console.log('username----', username, 'password------', _this.state.password);
 
-                _this.props.dispatch((0, _user.postUser)(new _Records.User({
+                _this.props.dispatch((0, _user.postUserSignIn)(new _Records.User({
                     email: _this.state.username,
                     password: _this.state.password
-                })));
+                }))).then(function (res) {
+                    console.log('res------', res);
 
-                _this.props.navigation.navigate('home');
+                    if (res.token) {
+                        _this.props.navigation.navigate('home');
+                    } else {
+                        alert(res.error);
+                    }
+                }).catch(function (err) {
+                    alert(err);
+                });
             };
 
             _this.state = {
@@ -209,5 +217,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
         }
     });
 
-    exports.default = (0, _reactRedux.connect)()(SignInScreen);
+    var mapStateToProps = function mapStateToProps(state) {
+        return {
+            user: state.user.user,
+            loading: state.user.loading,
+            error: state.user.error
+        };
+    };
+
+    exports.default = (0, _reactRedux.connect)(mapStateToProps)(SignInScreen);
 });

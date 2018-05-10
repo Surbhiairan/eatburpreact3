@@ -18,6 +18,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
     var _reviews2 = _interopRequireDefault(_reviews);
 
+    var _storage = require(_dependencyMap[2], "../services/storage.service");
+
+    var _storage2 = _interopRequireDefault(_storage);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     var ADD_REVIEW = exports.ADD_REVIEW = 'ADD_REVIEW';
@@ -27,15 +31,17 @@ __d(function (global, require, module, exports, _dependencyMap) {
     var FETCH_REVIEWS_SUCCESS = exports.FETCH_REVIEWS_SUCCESS = 'FETCH_REVIEWS_SUCCESS';
     var FETCH_REVIEWS_FAILURE = exports.FETCH_REVIEWS_FAILURE = 'FETCH_REVIEWS_FAILURE';
 
-    function addReview(data) {
+    function addReview(data, token) {
         return function (dispatch) {
             dispatch(saveReview());
             console.log("this.review===============", data);
+            console.log('token in review----------', token);
             return fetch(_apiConfig.API_ROOT + "/addReview", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'x-access-token': token
                 },
                 body: data
             }).then(function (res) {
@@ -43,7 +49,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             }).then(function (json) {
                 console.log("klsdhfldkhflksdfds======================", json);
                 dispatch(addReviewSuccess(json));
-                return json.docs;
+                return json;
             }).catch(function (err) {
                 return dispatch(addReviewFailure(err));
             });

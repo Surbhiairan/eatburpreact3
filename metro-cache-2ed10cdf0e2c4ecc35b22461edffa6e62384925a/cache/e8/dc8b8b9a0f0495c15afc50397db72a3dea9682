@@ -3,7 +3,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
         value: true
     });
     exports.POST_USER_FAILURE = exports.SIGN_OUT = exports.POST_USER_SUCCESS = exports.FETCH_USER = undefined;
-    exports.postUser = postUser;
+    exports.postUserSignIn = postUserSignIn;
+    exports.postUserSignUp = postUserSignUp;
     exports.getUser = getUser;
     exports.postUserSuccess = postUserSuccess;
     exports.postUserFailure = postUserFailure;
@@ -21,12 +22,35 @@ __d(function (global, require, module, exports, _dependencyMap) {
     var SIGN_OUT = exports.SIGN_OUT = 'SIGN_OUT';
     var POST_USER_FAILURE = exports.POST_USER_FAILURE = 'POST_USER_FAILURE';
 
-    function postUser(user) {
-        console.log('user--------', user);
+    function postUserSignIn(user) {
         return function (dispatch) {
-            console.log('inside here-----------');
             dispatch(getUser());
             return fetch(_apiConfig.API_ROOT + "/signIn", {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            }).then(function (res) {
+                return res.json();
+            }).then(function (json) {
+                console.log('json--------', json);
+                dispatch(postUserSuccess(json));
+
+                _storage2.default.saveItem('currentUser_Token', json.token);
+
+                return json;
+            }).catch(function (err) {
+                return dispatch(postUserFailure(err));
+            });
+        };
+    }
+
+    function postUserSignUp(user) {
+        return function (dispatch) {
+            dispatch(getUser());
+            return fetch(_apiConfig.API_ROOT + "/signUp", {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

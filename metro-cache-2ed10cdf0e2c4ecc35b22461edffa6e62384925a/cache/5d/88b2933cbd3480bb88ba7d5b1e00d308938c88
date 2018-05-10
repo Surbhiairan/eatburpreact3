@@ -58,14 +58,14 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
             var _this = _possibleConstructorReturn(this, (SignUpScreen.__proto__ || Object.getPrototypeOf(SignUpScreen)).call(this, props));
 
-            _this._handleUsername = function (text) {
+            _this._handleEmail = function (text) {
                 console.log(text, 'text--------');
 
                 _this.setState({
-                    username: text
+                    email: text
                 });
 
-                console.log(_this.state.username);
+                console.log(_this.state.email);
             };
 
             _this._handlePassword = function (text) {
@@ -76,19 +76,59 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 console.log(_this.state.password);
             };
 
-            _this._login = function (username, password) {
-                console.log("login clicked-------");
-                console.log('username----', username, 'password------', _this.state.password);
+            _this._handleConfirmPassword = function (text) {
+                _this.setState({
+                    confirmPassword: text
+                });
 
-                _this.props.dispatch((0, _user.postUser)(new _Records.User({
-                    email: _this.state.username,
-                    password: _this.state.password
-                })));
+                console.log(_this.state.confirmPassword);
+            };
+
+            _this._handleFirstName = function (text) {
+                _this.setState({
+                    firstName: text
+                });
+
+                console.log(_this.state.firstName);
+            };
+
+            _this._handleLastName = function (text) {
+                _this.setState({
+                    lastName: text
+                });
+
+                console.log(_this.state.lastName);
+            };
+
+            _this._login = function (email, password, confirmPassword, firstName, lastName) {
+                console.log("login clicked-------");
+                console.log('username----', email, 'password------', _this.state.password);
+
+                _this.props.dispatch((0, _user.postUserSignUp)(new _Records.User({
+                    email: _this.state.email,
+                    password: _this.state.password,
+                    confirmPassword: _this.state.confirmPassword,
+                    firstName: _this.state.firstName,
+                    lastName: _this.state.lastName
+                }))).then(function (res) {
+                    console.log('res------', res);
+
+                    if (res.success) {
+                        _this.props.navigation.navigate('home');
+                    } else {
+                        alert(res.error);
+                    }
+                }).catch(function (err) {
+                    alert(err);
+                });
             };
 
             _this.state = {
-                username: '',
-                password: ''
+                email: '',
+                password: '',
+                confirmPassword: '',
+                firstName: '',
+                lastName: ''
             };
             return _this;
         }
@@ -106,7 +146,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 26
+                            lineNumber: 29
                         }
                     },
                     _react3.default.createElement(
@@ -117,21 +157,21 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 27
+                                lineNumber: 30
                             }
                         },
-                        "Login"
+                        "Sign Up"
                     ),
                     _react3.default.createElement(_reactNative.TextInput, {
                         style: styles.input,
                         underlineColorAndroid: "transparent",
-                        placeholder: "Username",
+                        placeholder: "email",
                         placeholderTextColor: "#9a73ef",
                         autoCapitalize: "none",
-                        onChangeText: this._handleUsername,
+                        onChangeText: this._handleEmail,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 31
+                            lineNumber: 34
                         }
                     }),
                     _react3.default.createElement(_reactNative.TextInput, {
@@ -143,7 +183,43 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         onChangeText: this._handlePassword,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 37
+                            lineNumber: 40
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.TextInput, {
+                        style: styles.input,
+                        underlineColorAndroid: "transparent",
+                        placeholder: "Confirm Password",
+                        placeholderTextColor: "#9a73ef",
+                        autoCapitalize: "none",
+                        onChangeText: this._handleConfirmPassword,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 46
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.TextInput, {
+                        style: styles.input,
+                        underlineColorAndroid: "transparent",
+                        placeholder: "First Name",
+                        placeholderTextColor: "#9a73ef",
+                        autoCapitalize: "none",
+                        onChangeText: this._handleFirstName,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 52
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.TextInput, {
+                        style: styles.input,
+                        underlineColorAndroid: "transparent",
+                        placeholder: "Last Name",
+                        placeholderTextColor: "#9a73ef",
+                        autoCapitalize: "none",
+                        onChangeText: this._handleLastName,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 58
                         }
                     }),
                     _react3.default.createElement(_reactNative.View, {
@@ -152,7 +228,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 44
+                            lineNumber: 65
                         }
                     }),
                     _react3.default.createElement(
@@ -160,11 +236,11 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         {
                             style: styles.submitButton,
                             onPress: function onPress() {
-                                return _this2._login(_this2.state.username, _this2.state.password);
+                                return _this2._login(_this2.state.emil, _this2.state.password, _this2.state.confirmPassword, _this2.state.firstName, _this2.state.lastName);
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 45
+                                lineNumber: 66
                             }
                         },
                         _react3.default.createElement(
@@ -173,7 +249,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                                 style: styles.submitButtonText,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 50
+                                    lineNumber: 77
                                 }
                             },
                             " Submit "

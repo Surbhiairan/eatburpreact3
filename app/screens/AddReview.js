@@ -12,7 +12,8 @@ import {
     NativeModules,
     Alert, 
     Dimensions,
-    ActivityIndicator } from 'react-native';
+    ActivityIndicator,
+     } from 'react-native';
 
 import { connect } from 'react-redux';
 import { ImagePicker } from 'expo';
@@ -38,7 +39,8 @@ class AddReview extends Component{
         searchedRestaurants: [],
         searchedFood: [],
         pickerResult: [],
-        token: ''
+        token: '',
+        restoNameError: '',
     }
 
     componentDidMount() {
@@ -179,6 +181,29 @@ class AddReview extends Component{
           this.setState({ uploading: false });
         }
     };
+
+    refreshFields = () => {
+        this.setState({restoName: ''});
+        this.setState({itemName:''});
+        this.setState({review:''});
+        this.setState({rating:''});
+        this.setState({image:null});
+    }
+
+    showAlert(){
+        console.log("in showalert")
+        Alert.alert(
+            'bla bla bla',
+            'Review Added',
+            [
+            //   {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+            //   {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+              {text: 'OK', onPress: this.refreshFields},
+            ],
+            { cancelable: false }
+          )
+    }
+
     async uploadImageAsync(uri) {
         //let apiUrl = 'http://192.168.43.101:3000/uploadimage';
         //console.log(restoName, itemName, rating, review );
@@ -192,15 +217,36 @@ class AddReview extends Component{
           name: `photo.${fileType}`,
           type: `image/${fileType}`,
         });
-        formData.append('restaurantId', this.state.restoId);
-        formData.append('itemId', this.state.itemId)
+        //formData.append('restaurantId', this.state.restoId);
+        //formData.append('itemId', this.state.itemId)
         formData.append('restaurantName', this.state.restoName);
-        formData.append('itemName', this.state.itemName);
+        formData.append('foodItem', this.state.itemName);
         formData.append('rating', this.state.rating);
         formData.append('review', this.state.review);
       
         console.log("formdata====================================", formData);
-        this.props.dispatch(addReview(formData, this.state.token));
+        this.props.dispatch(addReview(formData, this.state.token)).then(res => {
+            console.log('res------', res)
+            if (res.success) {
+                this.showAlert();
+                //alert('Review saved to database!');
+                // Alert.alert(
+                //     'Alert Title',
+                //     'alertMessage',
+                //     [
+                //       {text: 'Ok', onPress: () => console.log('Ok Pressed!')},
+                //       {text: 'OK', onPress: this.onDeleteBTN},
+                //     ],
+                //     { cancelable: false }
+                //   )
+            } else {
+                alert(res);
+
+            }
+        }).catch(err => {
+            alert(err)
+        })
+    
         //console.log("form data in addreview.js", formData);
 
         // let options = {
@@ -215,6 +261,12 @@ class AddReview extends Component{
         //return fetch(apiUrl, options);
     }
     addReview () {
+        // if (this.state.restoName.trim() === "") {
+        //     this.setState(() => ({ restoNameError: "Restaurant name required."}));
+        //   } else {
+        //     this.setState(() => ({ restoNameError: null}));
+        //   }
+
         this.onSubmitReview();
         //alert(restoName+itemName+review+rating);
     }
@@ -255,13 +307,17 @@ class AddReview extends Component{
                autoCapitalize = "none"
                //ref = { }
                value = {this.state.restoName}
+               onBlur={() => this.state.restoName.trim()==="" && alert("Restaurant Name is required")}
                onChangeText = {this.handleRestaurant}/>
-               
+               {!!this.state.restoNameError && (
+                <Text style={{color: '#000'}}>{this.state.restoNameError}</Text>
+               )}
                {this.props.restaurantsLoading ? <Text>Loading...</Text>
                     :
-                   <ListView
+                <ListView
                 dataSource={ds.cloneWithRows(this.state.searchedRestaurants)}
-                renderRow={this.renderRestaurant} />
+                renderRow={this.renderRestaurant} 
+                enableEmptySections = {true}/>
                }
                
             <TextInput style = {styles.input}
@@ -273,13 +329,15 @@ class AddReview extends Component{
                onChangeText = {this.handleFood}/>
                {this.props.foodItemsLoading ? <Text>Loading...</Text>
                     :
-                    <ListView
+                <ListView
                dataSource={ds.cloneWithRows(this.state.searchedFood)}
-               renderRow={this.renderFood} />
+               renderRow={this.renderFood}
+               enableEmptySections = {true} />
                }
                <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
                placeholder = "Review"
+               value = { this.state.review}
                placeholderTextColor = "#9a73ef"
                autoCapitalize = "none"
                onChangeText = {this.handleReview}/>
@@ -287,6 +345,7 @@ class AddReview extends Component{
                <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
                placeholder = "Rating"
+               value = { this.state.rating}
                placeholderTextColor = "#9a73ef"
                autoCapitalize = "none"
                onChangeText = {this.handleRating}/>

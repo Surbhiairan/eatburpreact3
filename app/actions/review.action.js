@@ -37,7 +37,7 @@ export function addReview(data, token) {
             console.log("klsdhfldkhflksdfds======================",json);
             dispatch(addReviewSuccess(json));
             //console.log(json,"jsonnnnnnnnnnnnnn");
-            return json.docs;
+            return json;
         })  
         .catch(err => dispatch(addReviewFailure(err)))
     }

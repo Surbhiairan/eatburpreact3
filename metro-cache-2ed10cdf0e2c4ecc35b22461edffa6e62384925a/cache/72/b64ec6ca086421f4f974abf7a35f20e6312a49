@@ -27,6 +27,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
     var _review = require(_dependencyMap[7], "../actions/review.action");
 
+    var _storage = require(_dependencyMap[8], "../services/storage.service");
+
+    var _storage2 = _interopRequireDefault(_storage);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -87,7 +91,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 foodItems: [],
                 searchedRestaurants: [],
                 searchedFood: [],
-                pickerResult: []
+                pickerResult: [],
+                token: '',
+                restoNameError: ''
             }, _this.handleRestaurant = function (text) {
                 console.log("this.state.restaurants=============", _this.state.restaurants);
 
@@ -157,7 +163,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         style: styles.listItem,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 113
+                            lineNumber: 122
                         }
                     },
                     _react3.default.createElement(
@@ -169,7 +175,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 115
+                                lineNumber: 124
                             }
                         },
                         restaurant.name
@@ -182,7 +188,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         style: styles.listItem,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 126
+                            lineNumber: 135
                         }
                     },
                     _react3.default.createElement(
@@ -194,7 +200,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 128
+                                lineNumber: 137
                             }
                         },
                         food.name
@@ -272,18 +278,62 @@ __d(function (global, require, module, exports, _dependencyMap) {
                         }
                     }
                 }, null, _this2);
+            }, _this.refreshFields = function () {
+                _this.setState({
+                    restoName: ''
+                });
+
+                _this.setState({
+                    itemName: ''
+                });
+
+                _this.setState({
+                    review: ''
+                });
+
+                _this.setState({
+                    rating: ''
+                });
+
+                _this.setState({
+                    image: null
+                });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(AddReview, [{
             key: "componentDidMount",
             value: function componentDidMount() {
+                var _this3 = this;
+
                 this.props.dispatch((0, _restaurants.fetchRestaurants)());
                 this.props.dispatch((0, _foodItems.fetchFoodItems)());
+
+                _storage2.default.loadJWT().then(function (res) {
+                    _this3.setState({
+                        token: res
+                    });
+                }).catch(function (err) {
+                    return alert(err);
+                });
+            }
+        }, {
+            key: "showAlert",
+            value: function showAlert() {
+                console.log("in showalert");
+
+                _reactNative.Alert.alert('bla bla bla', 'Review Added', [{
+                    text: 'OK',
+                    onPress: this.refreshFields
+                }], {
+                    cancelable: false
+                });
             }
         }, {
             key: "uploadImageAsync",
             value: function uploadImageAsync(uri) {
+                var _this4 = this;
+
                 var uriParts, fileType, formData;
                 return regeneratorRuntime.async(function uploadImageAsync$(_context3) {
                     while (1) {
@@ -297,17 +347,24 @@ __d(function (global, require, module, exports, _dependencyMap) {
                                     name: "photo." + fileType,
                                     type: "image/" + fileType
                                 });
-                                formData.append('restaurantId', this.state.restoId);
-                                formData.append('itemId', this.state.itemId);
                                 formData.append('restaurantName', this.state.restoName);
-                                formData.append('itemName', this.state.itemName);
+                                formData.append('foodItem', this.state.itemName);
                                 formData.append('rating', this.state.rating);
                                 formData.append('review', this.state.review);
                                 console.log("formdata====================================", formData);
-                                this.props.dispatch((0, _review.addReview)(formData));
-                                console.log("form data in addreview.js", formData);
+                                this.props.dispatch((0, _review.addReview)(formData, this.state.token)).then(function (res) {
+                                    console.log('res------', res);
 
-                            case 13:
+                                    if (res.success) {
+                                        _this4.showAlert();
+                                    } else {
+                                        alert(res);
+                                    }
+                                }).catch(function (err) {
+                                    alert(err);
+                                });
+
+                            case 10:
                             case "end":
                                 return _context3.stop();
                         }
@@ -317,7 +374,19 @@ __d(function (global, require, module, exports, _dependencyMap) {
         }, {
             key: "addReview",
             value: function addReview() {
-                this.onSubmitReview();
+                if (this.state.restoName.trim() === "") {
+                    this.setState(function () {
+                        return {
+                            restoNameError: "Restaurant name required."
+                        };
+                    });
+                } else {
+                    this.setState(function () {
+                        return {
+                            restoNameError: null
+                        };
+                    });
+                }
             }
         }, {
             key: "onSubmitReview",
@@ -338,7 +407,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         }, {
             key: "render",
             value: function render() {
-                var _this3 = this;
+                var _this5 = this;
 
                 var image = this.state.image;
                 return _react3.default.createElement(
@@ -346,7 +415,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 226
+                            lineNumber: 284
                         }
                     },
                     _react3.default.createElement(
@@ -361,7 +430,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 227
+                                lineNumber: 285
                             }
                         },
                         _react3.default.createElement(
@@ -374,7 +443,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 235
+                                    lineNumber: 293
                                 }
                             },
                             " Add Review "
@@ -386,7 +455,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             style: styles.container,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 243
+                                lineNumber: 301
                             }
                         },
                         _react3.default.createElement(_reactNative.TextInput, {
@@ -399,15 +468,28 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             onChangeText: this.handleRestaurant,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 244
+                                lineNumber: 302
                             }
                         }),
+                        !!this.state.restoNameError && _react3.default.createElement(
+                            _reactNative.Text,
+                            {
+                                style: {
+                                    color: '#000'
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 312
+                                }
+                            },
+                            this.state.restoNameError
+                        ),
                         this.props.restaurantsLoading ? _react3.default.createElement(
                             _reactNative.Text,
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 254
+                                    lineNumber: 314
                                 }
                             },
                             "Loading..."
@@ -416,7 +498,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             renderRow: this.renderRestaurant,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 256
+                                lineNumber: 316
                             }
                         }),
                         _react3.default.createElement(_reactNative.TextInput, {
@@ -429,7 +511,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             onChangeText: this.handleFood,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 261
+                                lineNumber: 321
                             }
                         }),
                         this.props.foodItemsLoading ? _react3.default.createElement(
@@ -437,7 +519,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 268
+                                    lineNumber: 328
                                 }
                             },
                             "Loading..."
@@ -446,31 +528,33 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             renderRow: this.renderFood,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 270
+                                lineNumber: 330
                             }
                         }),
                         _react3.default.createElement(_reactNative.TextInput, {
                             style: styles.input,
                             underlineColorAndroid: "transparent",
                             placeholder: "Review",
+                            value: this.state.review,
                             placeholderTextColor: "#9a73ef",
                             autoCapitalize: "none",
                             onChangeText: this.handleReview,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 274
+                                lineNumber: 334
                             }
                         }),
                         _react3.default.createElement(_reactNative.TextInput, {
                             style: styles.input,
                             underlineColorAndroid: "transparent",
                             placeholder: "Rating",
+                            value: this.state.rating,
                             placeholderTextColor: "#9a73ef",
                             autoCapitalize: "none",
                             onChangeText: this.handleRating,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 281
+                                lineNumber: 342
                             }
                         }),
                         _react3.default.createElement(
@@ -478,11 +562,11 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             {
                                 style: styles.submitButton,
                                 onPress: function onPress() {
-                                    return _this3.addImage();
+                                    return _this5.addImage();
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 288
+                                    lineNumber: 350
                                 }
                             },
                             _react3.default.createElement(
@@ -491,7 +575,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                                     style: styles.submitButtonText,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 293
+                                        lineNumber: 355
                                     }
                                 },
                                 " Add Image "
@@ -507,7 +591,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 297
+                                lineNumber: 359
                             }
                         }),
                         _react3.default.createElement(
@@ -515,11 +599,11 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             {
                                 style: styles.submitButton,
                                 onPress: function onPress() {
-                                    return _this3.addReview();
+                                    return _this5.addReview();
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 298
+                                    lineNumber: 360
                                 }
                             },
                             _react3.default.createElement(
@@ -528,7 +612,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                                     style: styles.submitButtonText,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 303
+                                        lineNumber: 365
                                     }
                                 },
                                 " Submit "
@@ -541,13 +625,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
                             style: styles.loading,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 307
+                                lineNumber: 369
                             }
                         },
                         _react3.default.createElement(_reactNative.ActivityIndicator, {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 308
+                                lineNumber: 370
                             }
                         })
                     )

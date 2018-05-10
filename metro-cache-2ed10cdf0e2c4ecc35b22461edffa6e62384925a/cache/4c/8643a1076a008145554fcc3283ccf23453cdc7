@@ -22,7 +22,6 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
     switch (action.type) {
       case _review.ADD_REVIEW:
-        console.log("*******************************************");
         return _extends({}, state, {
           reviewLoading: true
         });

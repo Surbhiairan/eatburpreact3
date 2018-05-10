@@ -13,7 +13,7 @@ export function fetchRestaurants() {
         .then(json => {
 
             dispatch(fetchRestaurantsSuccess(json.docs));
-            //console.log(json,"jsonnnnnnnnnnnnnn");
+            console.log(json,"jsonnnnnnnnnnnnnn=========================================");
             return json.docs;
         })  
         .catch(err => dispatch(fetchRestaurantsFailure(err)))

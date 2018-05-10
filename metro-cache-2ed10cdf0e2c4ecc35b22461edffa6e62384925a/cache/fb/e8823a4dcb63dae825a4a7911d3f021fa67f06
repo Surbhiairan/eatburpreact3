@@ -21,6 +21,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 return res.json();
             }).then(function (json) {
                 dispatch(fetchRestaurantsSuccess(json.docs));
+                console.log(json, "jsonnnnnnnnnnnnnn=========================================");
                 return json.docs;
             }).catch(function (err) {
                 return dispatch(fetchRestaurantsFailure(err));
