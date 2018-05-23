@@ -99,4 +99,3 @@ export function fetchReviewsFailure(error) {
         payload: {error}
     }
 }
-

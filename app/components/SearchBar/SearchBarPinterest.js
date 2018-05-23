@@ -44,11 +44,11 @@ const styles = {
         marginBottom:10,
         //backgroundColor: '#efefef',             //actual grey
         backgroundColor: '#fff',
-        height: 46, 
-        borderTopLeftRadius:4,
-        borderTopRightRadius:4,
-        borderBottomLeftRadius:4,
-        borderBottomRightRadius:4,
+        height: 40, 
+        borderTopLeftRadius:20,
+        borderTopRightRadius:20,
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
         elevation:4,
         //borderWidth:1,
         //borderColor: '#e9e9e9',
@@ -56,7 +56,7 @@ const styles = {
     textBox: {
         fontSize: 20,
         textAlign: 'auto',
-        fontFamily: 'open-sans-semibold',
+        fontFamily: 'open-sans-regular',
         color: '#4d5656',    // grey
         //color: '#000',
         //fontWeight: 'bold'

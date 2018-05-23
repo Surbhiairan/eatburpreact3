@@ -1,9 +1,18 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0",
-      "androidStatusBar": {
-        //"backgroundColor": "#C2185B"    //pink
-        "backgroundColor": "#ffffff"
-    }
+   "name": "Eatburp",
+   "icon": "./app/assets/images/app-icon.png",
+   "version": "1.0.0",
+   "slug": "testExpo",
+   "sdkVersion": "25.0.0",
+   "ios": {
+     "bundleIdentifier": "com.eatburp.eatburp"
+   },
+   "android": {
+     "package": "com.eatburp.eatburp"
+   },
+   "androidStatusBar": {
+    "backgroundColor": "#ffffff"
+  }
   }
 }

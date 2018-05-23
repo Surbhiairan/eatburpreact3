@@ -13,7 +13,8 @@ import {
     Alert, 
     Dimensions,
     ActivityIndicator,
-     } from 'react-native';
+    KeyboardAvoidingView,
+} from 'react-native';
 
 import { connect } from 'react-redux';
 import { ImagePicker } from 'expo';
@@ -78,35 +79,35 @@ class AddReview extends Component{
     // }
 
     handleRestaurant = (text) => {
-        console.log("this.state.restaurants=============",this.state.restaurants);
+        //console.log("this.state.restaurants=============",this.state.restaurants);
         var searchedRestaurants = this.props.restaurants.filter(function(restaurant) {
-            return restaurant.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
+            return restaurant.restaurant_name.toLowerCase().indexOf(text.toLowerCase()) > -1;
           });
           this.setState({searchedRestaurants: searchedRestaurants});
           this.setState({ restoName: text })
     }
     
     _handlePressRestaurant = (restaurant) => {
-        this.setState ( { restoName: restaurant.name});
+        this.setState ( { restoName: restaurant.restaurant_name});
         this.setState ( { restoId: restaurant._id});      
         this.setState ( { searchedRestaurants: []});
-        console.log("in handle press restaurant", this.state.restoName);
+        //console.log("in handle press restaurant", this.state.restoName);
     }
 
     handleFood = (text)=> {
         var searchedFood = this.props.foodItems.filter(function(food) {
             //console.log('foooooooo************************dddddddddddd',food);
-            return food.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
+            return food.dish_name.toLowerCase().indexOf(text.toLowerCase()) > -1;
           });
         this.setState({searchedFood: searchedFood});
         this.setState({ itemName: text })
     }
 
     _handlePressFood = (food) => {
-        this.setState ( { itemName: food.name});
+        this.setState ( { itemName: food.dish_name});
         this.setState({ itemId: food._id })        
         this.setState ( { searchedFood: []});
-        console.log("in handle press food item", this.state.itemName);       
+        //console.log("in handle press food item", this.state.itemName);       
     }
 
     handleReview = (text)=> {
@@ -125,7 +126,7 @@ class AddReview extends Component{
               style={styles.listItemText}
               onPress={() => this._handlePressRestaurant(restaurant)}
             >
-            {restaurant.name}</Text>
+            {restaurant.restaurant_name}</Text>
           </View>
         );
     };
@@ -138,7 +139,7 @@ class AddReview extends Component{
               style={styles.listItemText}
               onPress={() => this._handlePressFood(food)}
             >
-            {food.name}</Text>
+            {food.dish_name}</Text>
             
           </View>
         );
@@ -224,7 +225,7 @@ class AddReview extends Component{
         formData.append('rating', this.state.rating);
         formData.append('review', this.state.review);
       
-        console.log("formdata====================================", formData);
+        //console.log("formdata====================================", formData);
         this.props.dispatch(addReview(formData, this.state.token)).then(res => {
             console.log('res------', res)
             if (res.success) {
@@ -261,11 +262,11 @@ class AddReview extends Component{
         //return fetch(apiUrl, options);
     }
     addReview () {
-        // if (this.state.restoName.trim() === "") {
-        //     this.setState(() => ({ restoNameError: "Restaurant name required."}));
-        //   } else {
-        //     this.setState(() => ({ restoNameError: null}));
-        //   }
+        if (this.state.restoName.trim() === "") {
+            this.setState(() => ({ restoNameError: "Restaurant name required."}));
+          } else {
+            this.setState(() => ({ restoNameError: null}));
+          }
 
         this.onSubmitReview();
         //alert(restoName+itemName+review+rating);
@@ -282,6 +283,8 @@ class AddReview extends Component{
         
         return(
             <ScrollView>
+                <KeyboardAvoidingView
+                behavior="padding">
                 <View
                 style={{
                     backgroundColor: '#fff',
@@ -307,7 +310,7 @@ class AddReview extends Component{
                autoCapitalize = "none"
                //ref = { }
                value = {this.state.restoName}
-               onBlur={() => this.state.restoName.trim()==="" && alert("Restaurant Name is required")}
+               onBlur={() => this.state.restoName.trim()==="" && this.setState({restoNameError: 'Required'})}
                onChangeText = {this.handleRestaurant}/>
                {!!this.state.restoNameError && (
                 <Text style={{color: '#000'}}>{this.state.restoNameError}</Text>
@@ -373,6 +376,7 @@ class AddReview extends Component{
                       <ActivityIndicator/>
                   </View>
          }
+         </KeyboardAvoidingView>
          </ScrollView>
         );
     }

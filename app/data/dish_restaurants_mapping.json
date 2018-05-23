@@ -1,0 +1,89 @@
+{"_id":{"$oid":"5af6fd3ece31f73679fce2bc"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88f4","price":109,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2bd"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88f5","price":69,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2be"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88f6","price":69,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2bf"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88f7","price":69,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c0"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88f8","price":69,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c1"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88f9","price":49,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c2"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88fb","price":69,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c3"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88fa","price":49,"dish_category":"All Day Nashta"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c4"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88fd","price":129,"dish_category":"Sandwiches"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c5"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88fc","price":129,"dish_category":"Sandwiches"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c6"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88fe","price":109,"dish_category":"Sandwiches"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c7"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa88ff","price":149,"dish_category":"Toasts"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c8"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8900","price":149,"dish_category":"Toasts"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2c9"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8901","price":109,"dish_category":"Toasts"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ca"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8902","price":129,"dish_category":"Toasts"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2cb"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8904","price":129,"dish_category":"Halka"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2cc"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8903","price":179,"dish_category":"Halka"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2cd"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8905","price":129,"dish_category":"Halka"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ce"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8906","price":69,"dish_category":"Halka"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2cf"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8907","price":149,"dish_category":"Bhaari"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d0"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8908","price":149,"dish_category":"Bhaari"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d1"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8909","price":139,"dish_category":"Bhaari"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d2"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa890a","price":119,"dish_category":"Bhaari"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d3"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa890b","price":109,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d4"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa890c","price":399,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d5"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa891f","price":399,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d6"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8921","price":69,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d7"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa890d","price":349,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d8"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa890e","price":349,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2d9"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8920","price":69,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2da"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa890f","price":49,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2db"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8910","price":49,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2dc"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8911","price":29,"dish_category":"Dessert"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2dd"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8912","price":129,"dish_category":"Poori Meal"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2de"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8913","price":129,"dish_category":"Stuffed Parathas"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2df"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8914","price":99,"dish_category":"Stuffed Parathas"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e0"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8915","price":99,"dish_category":"Stuffed Parathas"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e1"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8916","price":199,"dish_category":"Angrezi Mitti"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e2"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8917","price":179,"dish_category":"Angrezi Mitti"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e3"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8918","price":179,"dish_category":"Angrezi Mitti"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e4"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa891a","price":149,"dish_category":"Home Made Fries"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e5"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8919","price":179,"dish_category":"Angrezi Mitti"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e6"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa891b","price":129,"dish_category":"Home Made Fries"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e7"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa891c","price":129,"dish_category":"Home Made Fries"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e8"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa891d","price":129,"dish_category":"Meri Maggi"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2e9"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa891e","price":109,"dish_category":"Meri Maggi"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ea"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8922","price":179,"dish_category":"Rice"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2eb"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8923","price":149,"dish_category":"Rice"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ec"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8925","price":69,"dish_category":"Filter Coffee"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ed"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8924","price":129,"dish_category":"Rice"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ee"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8926","price":69,"dish_category":"Filter Coffee"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ef"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8939","price":49,"dish_category":"Filter Coffee"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f0"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa893a","price":69,"dish_category":"Cha/Coffee Alag"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f1"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa893b","price":69,"dish_category":"Cha/Coffee Alag"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f2"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8928","price":109,"dish_category":"Garam"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f3"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8927","price":69,"dish_category":"Cha/Coffee Alag"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f4"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8929","price":69,"dish_category":"Garam"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f5"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa892a","price":109,"dish_category":"Juices"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f6"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa892b","price":109,"dish_category":"Juices"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f7"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa892e","price":69,"dish_category":"Juices"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f8"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa892c","price":109,"dish_category":"Juices"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2f9"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa892d","price":99,"dish_category":"Juices"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2fa"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8930","price":49,"dish_category":"Cha-Kadak"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2fb"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa892f","price":149,"dish_category":"Cha-Kadak"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2fc"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8931","price":49,"dish_category":"Cha-Kadak"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2fd"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8932","price":149,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2fe"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8933","price":149,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce2ff"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8935","price":129,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce300"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8934","price":139,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce301"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8936","price":129,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce302"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8937","price":119,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce303"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8938","price":109,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce304"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa893e","price":99,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce305"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa893c","price":99,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce306"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa893d","price":69,"dish_category":"Fresh Shake"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce307"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8940","price":99,"dish_category":"Lemonade"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce308"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa893f","price":109,"dish_category":"Lemonade"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce309"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8941","price":109,"dish_category":"Thanda"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce30a"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8944","price":99,"dish_category":"Thanda"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce30b"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8942","price":99,"dish_category":"Lassi/Matha"}
+{"_id":{"$oid":"5af6fd3ece31f73679fce30c"},"restaurant_id":"5af6ae1cf36d280cecd2038c","dish_id":"5af6a339ce31f73679fa8943","price":69,"dish_category":"Lassi/Matha"}
+{"_id":{"$oid":"5af87a59aac03410e447bc9c"},"restaurant_id":"5af825b8ff144c4f205cc19d","dish_id":"5af87935ce31f73679051e91","price":120,"__v":0,"dish_category":"Soups"}
+{"_id":{"$oid":"5af880adce31f73679054ae6"},"dish_id":"5af880a9ce31f73679054ab7","restaurant_id":"5af825b8ff144c4f205cc19d","__v":0,"price":120,"dish_category":"Soups"}
+{"_id":{"$oid":"5af8849ece31f73679056421"},"dish_id":"5af8849bce31f73679056408","restaurant_id":"5af825b8ff144c4f205cc19d","__v":0,"price":140,"dish_category":"Soups"}
+{"_id":{"$oid":"5af8849ece31f73679056423"},"dish_id":"5af8849dce31f73679056415","restaurant_id":"5af825b8ff144c4f205cc19d","__v":0,"price":120,"dish_category":"Soups"}
+{"_id":{"$oid":"5af964b8ce31f736790a4fc3"},"dish_id":"5af96436ce31f736790a4c75","restaurant_id":"5af825b8ff144c4f205cc19d","__v":0,"price":140,"dish_category":"Soups"}
+{"_id":{"$oid":"5af98618ce31f736790b1a51"},"dish_id":"5af98616ce31f736790b1a45","restaurant_id":"5af825b8ff144c4f205cc19d","__v":0,"price":150,"dish_category":"Soups"}
+{"_id":{"$oid":"5af98786ce31f736790b2342"},"dish_id":"5af98786ce31f736790b233f","restaurant_id":"5af825b8ff144c4f205cc19d","__v":0,"price":160,"dish_category":"Sandwiches"}
+{"_id":{"$oid":"5af98cb2ce31f736790b4390"},"dish_id":"5af98cb2ce31f736790b438c","restaurant_id":"5af98b2b3e27e86190113c5d","__v":0,"price":130,"dish_category":"Pizzas"}

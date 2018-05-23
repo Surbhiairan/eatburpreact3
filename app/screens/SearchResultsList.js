@@ -16,8 +16,9 @@ import {
 
 import tags from '../data/tags';
 import food from '../data/food';
-
+import { BackHandler } from 'react-native';
 import { connect } from 'react-redux';
+import { fetchRestaurants, fetchRestaurantsSuccess, fetchRestaurantsFailure, selectedRestaurantDetails, fetchTopDishRestaurants } from '../actions/restaurants.action';
 
 import { API_ROOT } from '../../api-config';
 
@@ -27,7 +28,8 @@ var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 class SearchResultsList extends React.Component {
 
     constructor(props){
-        super(props);
+        super(props)
+        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
         state= {
             searchQuery: '',
             foodData: food,
@@ -37,40 +39,56 @@ class SearchResultsList extends React.Component {
     }
 
     componentWillMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+    
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+    
+    handleBackButtonClick() {
+        this.props.navigation.goBack(null);
+        return true;
+    }
+    
+    componentDidMount() {
         const { params } = this.props.navigation.state;
-        var searchQuery = params.searchQuery;
+        var searchQuery = params.tag;
         this.setState({searchQuery: searchQuery});
         console.log("search query in comp will mount", searchQuery); 
-        var foodId = params.foodId;
-        console.log("foooooood id", foodId);
-        this.fetchTopRestaurants(foodId);
+        this.props.dispatch(fetchTopDishRestaurants(searchQuery));
+        
+        //this.getTopDishRestaurants(searchQuery);
+        // var foodId = params.foodId;
+        // console.log("foooooood id", foodId);
+        // this.fetchTopRestaurants(foodId);
     }
 
-    fetchTopRestaurants = async (foodId) => {
-        try {
-            console.log("in fetchTopRestaurants foodid", foodId);
-            const response = await fetch(`${API_ROOT}/getTopRestaurants`, {
+    // fetchTopRestaurants = async (foodId) => {
+    //     try {
+    //         console.log("in fetchTopRestaurants foodid", foodId);
+    //         const response = await fetch(`${API_ROOT}/getTopRestaurants`, {
             
-                method: 'POST',
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  foodId: foodId,
+    //             method: 'POST',
+    //             headers: {
+    //               Accept: 'application/json',
+    //               'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({
+    //               foodId: foodId,
                   
-                }),
-            });
+    //             }),
+    //         });
 
-            const json = await response.json();
+    //         const json = await response.json();
 
-            console.log(json, "json");
-            this.setState({topRestaurants: json.docs});
-            //console.log(this.state.data,"dataaa=============");
-        } catch( error) {
-            console.error(error);
-        }
-    }
+    //         console.log(json, "json");
+    //         this.setState({topRestaurants: json.docs});
+    //         //console.log(this.state.data,"dataaa=============");
+    //     } catch( error) {
+    //         console.error(error);
+    //     }
+    // }
 
     _onRefresh() {
         this.setState({refreshing: true});
@@ -79,14 +97,48 @@ class SearchResultsList extends React.Component {
         });
     }
 
-    fetchData() {
-        var that = this;
-        // this.setState({isFetching: false});
-        // axios.get('http://192.168.0.13:3000/api/story/get/by/geo')
-        //   .then((res) => {
-        //     that.setState({ stories: res.data, isFetching: false });
-        //     that.props.dispatch(StoryActions.setStories(res.data))
-        //   })
+    // fetchData() {
+    //     var that = this;
+    //     // this.setState({isFetching: false});
+    //     // axios.get('http://192.168.0.13:3000/api/story/get/by/geo')
+    //     //   .then((res) => {
+    //     //     that.setState({ stories: res.data, isFetching: false });
+    //     //     that.props.dispatch(StoryActions.setStories(res.data))
+    //     //   })
+    // }
+
+    _renderRestaurants = (item) => {
+        //console.log("item", item);
+        return(
+        <View style={{
+            backgroundColor: '#fff',
+            elevation: 2,
+            marginTop: 5,
+            marginLeft: 5,
+            marginRight: 5,
+            borderBottomLeftRadius: 2,
+            borderBottomRightRadius: 2,
+            borderTopLeftRadius: 2,
+            borderTopRightRadius: 2
+        }}>
+
+            <Text style = {{
+                fontFamily: 'open-sans-regular',
+                fontSize: 20,
+                paddingLeft: 5,
+                
+            }}>{item.restaurant_name}</Text>
+            <Text style = {{
+                fontFamily: 'open-sans-light',
+                fontSize: 15,
+                paddingLeft: 5,
+            }}>{item.dish_name}</Text>
+            
+            <Text>Rating: {item.average_rating}</Text>
+           
+            <Text>Recommendations: {item.recommendation}</Text>
+        </View>
+        );
     }
 
     _renderItem({ item, index }) {
@@ -219,20 +271,22 @@ class SearchResultsList extends React.Component {
     };
     
     render(){
+        //console.log("this.props", this.props);
+        //console.log("this.props.topdishrestaurants", this.props.topDishRestaurants);
         return(
             <View style = {styles.main}>
             <StatusBar translucent = {false} barStyle="default" />
             <View style = {styles.searchBarContainer}>
                 <SearchBarPinterest />
             </View>
-            <View style={styles.tagsContainer}>
+            {/* <View style={styles.tagsContainer}>
                 <ListView
                  horizontal={true}
                  //style={{flex:1, margin: 4}}
                  dataSource={ds.cloneWithRows(tags)}
                  renderRow={this.renderTag} 
                  showsHorizontalScrollIndicator={false}/>
-            </View>
+            </View> */}
 
             {/* <View style={styles.tagsContainer}>
                 <View style= {styles.suggestionTagContainer}>
@@ -257,9 +311,14 @@ class SearchResultsList extends React.Component {
                 </View>
             </View> */}
             <View style = {styles.searchResultsTitleContainer}>
+                <Text style={{
+                    paddingLeft: 20,
+                    fontFamily: 'open-sans-regular',
+                    fontSize: 15,
+                }}>Top restaurants for </Text>
                 <Text style = {styles.searchResultsTitle}>
-                    {this.state.searchQuery},
-                    {this.props.foodId}</Text>
+                {this.props.navigation.state.params.tag}
+                </Text>
             </View>
 
             {/* <View style={{ flexDirection: 'row', backgroundColor:'#fff'}}>
@@ -270,21 +329,14 @@ class SearchResultsList extends React.Component {
                  renderRow={this._renderItem} 
                  showsVerticalScrollIndicator={false}/>
             </View> */}
-
-            <FlatList style= {styles.list}
-                refreshControl={
-                <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this._onRefresh.bind(this)}
-                />
-                }
-                data= {food}
-                extraData={this.state}
-                keyExtractor={this._keyExtractor}
-                renderItem={this._renderItem}
-                showsVerticalScrollIndicator={false}
-
-            />
+            {this.props.topDishRestaurantsLoading ? <Text>Loading...</Text>
+            :
+            <ListView style= {styles.list}
+            dataSource={ds.cloneWithRows(this.props.topDishRestaurants)}
+            renderRow={this._renderRestaurants}
+            enableEmptySections = {true} />
+           
+            }
             </View>
         );
     }
@@ -436,11 +488,17 @@ placeName: {
 
 //taking the redux state and mapping it to the component props
 //the param state is the redux state
-const mapStateToProps = (state) => {
-    const foodId = state.search.selectedFood;
-    return {
-        foodId,
-    };
-};
+const mapStateToProps = (state) => ({
+    foodItems: state.foodItems.foodItems,
+    foodItemsLoading: state.foodItems.foodItemsLoading,
+    foodItemsError: state.foodItems.foodItemsError,
+    topDishRestaurants: state.restaurants.topDishRestaurants,
+    topDishRestaurantsLoading: state.restaurants.topDishRestaurantsLoading,
+    topDishRestaurantsError: state.restaurants.topDishRestaurantsError,
+    // const foodId : state.search.selectedFood,
+    // return {
+    //     foodId,
+    // };
+});
 
-export default connect()(SearchResultsList);
+export default connect(mapStateToProps)(SearchResultsList);

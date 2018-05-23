@@ -21,6 +21,7 @@ class MyReviews extends Component {
 
     componentDidMount(){
         //get user details
+        //pass token here
         this.props.dispatch(fetchReviews());
     }
 
@@ -43,6 +44,10 @@ class MyReviews extends Component {
                  keyExtractor={this._keyExtractor}
                  renderItem={({item}) => <Text>{item.review}</Text>}
                />
+
+               <TouchableOpacity>
+                   
+               </TouchableOpacity>
             </View>
         )
     }

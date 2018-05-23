@@ -13,7 +13,8 @@ import SearchResultsList from '../screens/SearchResultsList';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import MyReviews from '../screens/MyReviews';
-
+import HomeFive from '../screens/HomeFive';
+import RestaurantDetails from '../screens/RestaurantDetails';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SearchStack = StackNavigator(
@@ -31,10 +32,24 @@ const SearchStack = StackNavigator(
     
 );
 
+const RestaurantStack = StackNavigator(
+    {
+        restaurantList: {
+            screen: HomeFive,
+        },
+        restaurantDetails :{
+            screen: RestaurantDetails,
+        }
+    },
+    {
+        headerMode: 'none',
+    }
+);
+
 const HomeStack = StackNavigator(
     {
         home: {
-            screen: HomeFour,
+            screen: RestaurantStack,
         },
         searchSuggestion: {
             screen: SearchStack,
